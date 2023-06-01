@@ -1,0 +1,29 @@
+{%extends 'parent.html '%}
+{%block title%}
+list _ courses
+{%endblock%}
+{%block desc%}
+list courses page
+{%endblock%}
+{%block content%}
+    {{courses}}
+<table width="100%" border="2px solid black">
+        <tr>
+            <th>course id </th>
+            <th>course name </th>
+            <th>modify</th>
+        </tr>
+
+    {%for course in courses%}
+        <tr>
+            <td>{{course|first}} </td>
+            <td>{{course.1}}  </td>
+            <td>{{course.2}}</td>
+            <td>
+                <a style="color:white" href="/course/update/1"> Update </a>
+                <a style="color:white" href="/course/delete/1" > Delete </a>
+            </td>
+        </tr>
+{%endfor%}
+</table>
+{%endblock%}
