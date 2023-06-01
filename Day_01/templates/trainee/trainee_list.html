@@ -5,7 +5,26 @@ list _ trainee
 {%block desc%}
 list trianee page
 {%endblock%}
-{%block content%}
-list of trainee
-{%endblock%}
 
+{%block content%}
+    {{trainee}}
+<table width="100%" border="2px solid black">
+        <tr>
+            <th>trainee id </th>
+            <th>ttr name </th>
+            <th>modify</th>
+        </tr>
+
+    {%for tr in trainee%}
+        <tr>
+            <td>{{tr|first}} </td>
+            <td>{{tr.1}}  </td>
+            <td>{{tr.2}}</td>
+            <td>
+                <a style="color:white" href="{%url 'traineeupdate tr|first'%}"> Update </a>
+                <a style="color:white" href="{%url 'traineedelete tr|first'%}" > Delete </a>
+            </td>
+        </tr>
+{%endfor%}
+</table>
+{%endblock%}

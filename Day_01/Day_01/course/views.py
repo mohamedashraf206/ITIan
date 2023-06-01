@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse,HttpResponseRedirect
+from django.http import HttpResponse
 
 
 # Create your views here.
@@ -15,7 +15,7 @@ def courseadd(request):
 
 
 def courseupdate(request, id):
-    return HttpResponseRedirect('/course')
+    return HttpResponse(' hi from course update view')
 
 
 def coursedelete(request, ID):
