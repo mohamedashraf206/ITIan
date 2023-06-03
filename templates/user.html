@@ -1,0 +1,23 @@
+{%extends 'parent.html '%}
+{%block title%}
+user from DB
+{%endblock%}
+{%block desc%}
+user from db
+{%endblock%}
+{%block content%}
+<table width="100%" border="2px solid black">
+        <tr>
+            <th>trainee id   </th>
+            <th> trainee name  </th>
+            <th>email </th>
+        </tr>
+        {% for tr in trainee_db %}
+    <tr>
+            <td>{{tr.id}} </td>
+            <td>{{tr.firstname}}  </td>
+            <td>{{tr.email}}</td>
+    </tr>
+{%endfor%}
+    </table>
+{%endblock%}

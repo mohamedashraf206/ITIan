@@ -4,7 +4,7 @@ from django.http import HttpResponse,HttpResponseRedirect
 
 # Create your views here.
 def courselist(request):
-    courses = [(1, 'JAVA'), (2, 'Python'), (3, 'Dotnet')]
+    courses = [(1, 'PHP'), (2, 'Python'), (3, 'Dotnet')]
     context={}
     context['courses']=courses
     return render(request, 'course/course_list.html',context)

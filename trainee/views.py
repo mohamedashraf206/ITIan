@@ -1,15 +1,42 @@
+
+
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse ,HttpResponseRedirect
+from .models import *
+
 
 # Create your views here.
 def traineelist(request):
-    trainee = [(1, 'mohamed'), (2, 'Eslam'), (3, 'Tarek')]
+
     context={}
-    context['trainee']=trainee
+    context['trainee_list'] = trainee_list.objects.all()
     return render(request,'trainee/trainee_list.html',context)
-def traineeadd(request):
-    return render(request,'trainee/add_trainee.html')
-def traineeupdate(request,id):
+def traineeadd(req):
+    context={}
+    if (req.method == 'POST'):
+        trainee_name = req.POST['mytrainee']
+        email = req.POST['email']
+        train = trainee_list(trainee_name=trainee_name)
+        train.trainee_email = email
+        train.save()
+    return render(req,'trainee/add_trainee.html',context)
+def traineeupdate(req,id):
+    context = {}
+    context['catagories'] = trainee_list.objects.all
+    context['taskdata'] = trainee_list.objects.get(id=id)
+    if (req.method == 'POST'):
+        name = req.POST['taskname']
+        trainee_list.objects.filter(id=id).update(name=req.POST['taskname'],
+                                          catagoryid=Catagory.objects.get(id=req.POST['catagory']))
+        return HttpResponseRedirect('/Tasks')
     return HttpResponse(' hi from trainee update view')
 def traineedelete(request,ID):
-    return HttpResponse(' hi  trainee with ID ' +str(ID)+ ' is deleted')
+    trainee_list.objects.filter(id=ID).delete()
+
+
+
+    return HttpResponseRedirect('/trainee')
+
+
+
+    # return HttpResponse(' hi  trainee with ID ' +str(ID)+ ' is deleted')
