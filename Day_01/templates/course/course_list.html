@@ -20,8 +20,8 @@ list courses page
             <td>{{course.1}}  </td>
             <td>{{course.2}}</td>
             <td>
-                <a style="color:white" href="/course/update/1"> Update </a>
-                <a style="color:white" href="/course/delete/1" > Delete </a>
+                <a style="color:white" href="{%url 'courseupdate' course.0 %}"> Update </a>
+                <a style="color:white" href="{%url 'coursedelete' course.0 %}" > Delete </a>
             </td>
         </tr>
 {%endfor%}

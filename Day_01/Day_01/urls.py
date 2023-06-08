@@ -16,26 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.contrib import admin
-from django.urls import path
-from trainee.views import *
+
 from course.views import *
-from myaccount.views import *
+# from trainee.views import *
+# from myaccount.views import  *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #trainee route
-    path('trainee/',traineelist,name='traineelist'),
-    path('trainee/add',traineeadd,name='traineeadd'),
-    path('trainee/update/<int:id>',traineeupdate,name='traineeupdate'),
-    path('trainee/delete/<int:ID>', traineedelete, name='traineedelete'),
-    #course route
     path('course/', courselist, name='courselist'),
-    path('course/add', courseadd, name='courseadd'),
-    path('course/update/<int:id>', courseupdate, name='courseupdate'),
-    path('course/delete/<int:ID>', coursedelete, name='coursedelete'),
-    #myaccount route
-    path('',Login , name='Login'),
-    path('Registration',Registration , name='Registration'),
-    path('Logout',Logout , name='Logout'),
+    path('course/<int:id>', get_course, name='getcourse') ,
+    path('addcourse' , add_course),
+    path('updatecourse/<int:id>', update_course),
+    path('deletecourse/<int:id>', delete_course),
+    #trainee route
+
+
 ]

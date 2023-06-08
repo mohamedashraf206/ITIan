@@ -11,18 +11,18 @@ list trianee page
 <table width="100%" border="2px solid black">
         <tr>
             <th>trainee id </th>
-            <th>ttr name </th>
+            <th>name </th>
             <th>modify</th>
         </tr>
 
-    {%for tr in trainee%}
+    {%for tr in trainee_list%}
         <tr>
-            <td>{{tr|first}} </td>
-            <td>{{tr.1}}  </td>
-            <td>{{tr.2}}</td>
+            <td>{{tr.id}} </td>
+            <td>{{tr.trainee_name}}  </td>
+            <td>{{tr.trainee_email}}</td>
             <td>
-                <a style="color:white" href="{%url 'traineeupdate tr|first'%}"> Update </a>
-                <a style="color:white" href="{%url 'traineedelete tr|first'%}" > Delete </a>
+                <a style="color:white" href=""> Update </a>
+                <a style="color:white" href="{%url 'traineedelete' tr.id%}" > Delete </a>
             </td>
         </tr>
 {%endfor%}

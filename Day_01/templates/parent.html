@@ -36,7 +36,7 @@
                         <li><a class="dropdown-item" href="#!">Settings</a></li>
                         <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                        <li><a class="dropdown-item" href="{% url 'Logout'%}">Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -46,7 +46,7 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Core</div>
+                            <div class="sb-sidenav-menu-heading">Welcome {{request.session.firstname}}</div>
                             <a class="nav-link" href="/trainee">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Trainee
@@ -54,6 +54,10 @@
                              <a class="nav-link" href="/trainee/add">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Add Trainee
+                            </a>
+                             <a class="nav-link" href="{%url 'add_trainee_form'%}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Add Trainee from view
                             </a>
                               <a class="nav-link" href="/course">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
@@ -74,7 +78,7 @@
                                         {%endblock%}
                         </h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Dashboard 1</li>
+                            <li class="breadcrumb-item active">Dashboard 500</li>
                         </ol>
                         <div class="row">
                             <div class="col-xl-3 col-md-6">
