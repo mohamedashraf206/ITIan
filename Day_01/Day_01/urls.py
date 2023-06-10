@@ -19,7 +19,7 @@ from django.urls import path
 
 from course.views import *
 # from trainee.views import *
-# from myaccount.views import  *
+from myaccount.views import  *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,6 +29,7 @@ urlpatterns = [
     path('updatecourse/<int:id>', update_course),
     path('deletecourse/<int:id>', delete_course),
     #trainee route
+    path('',Login ,name ='Login')
 
 
 ]

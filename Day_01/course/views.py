@@ -4,7 +4,7 @@
 from rest_framework.response import Response
 from rest_framework.status import *
 from rest_framework.decorators import api_view
-# from .models import *
+from .models import *
 from .serilaizer import *
 
 
@@ -36,12 +36,16 @@ def add_course(request) :
 
 @api_view(['PUT'])
 def update_course(request , id):
-    updateCourse= courses.objects.get(id=id)
-    serializedUpdateCourse= courses_serializer(instance=updateCourse,data=request.data)
-    if (serializedUpdateCourse.is_valid()):
-        serializedUpdateCourse.save()
-        return Response(status=HTTP_200_OK , data=serializedUpdateCourse.data)
+    if (len(courses.objects.filter(id=id))!=0):
 
+        updateCourse= courses.objects.get(id=id)
+        serializedUpdateCourse= courses_serializer(instance=updateCourse,data=request.data)
+
+        if (serializedUpdateCourse.is_valid()):
+            serializedUpdateCourse.save()
+            return Response(status=HTTP_200_OK, data=serializedUpdateCourse.data)
+    else:
+        return Response(status=HTTP_207_MULTI_STATUS)
 
 
 @api_view(['DELETE'])
